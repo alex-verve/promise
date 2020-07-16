@@ -46,6 +46,14 @@ async_instance = Async()
 _state_lock = Lock()
 
 
+def set_state_lock(lock_obj):
+    """
+    In order to disable the lock - pass contextlib.nullcontext()
+    """
+    global _state_lock
+    _state_lock = lock_obj
+
+
 def get_default_scheduler():
     # type: () -> ImmediateScheduler
     return default_scheduler
